@@ -19,7 +19,7 @@ public class GameController {
     private GameService gameService;
 
     @GetMapping
-    public Iterable<Game> findAll() {
+    public Iterable<Game> viewGameList() {
         return gameService.findAll();
     }
 

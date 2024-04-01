@@ -2,13 +2,15 @@ package com.app.mygamerlist.api.game.service;
 
 import com.app.mygamerlist.api.game.model.Game;
 import com.app.mygamerlist.api.game.repository.GameRepository;
-import com.app.mygamerlist.common.exception.IdMismatchException;
 import com.app.mygamerlist.common.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+
+import static com.app.mygamerlist.common.exception.NotFoundException.GAME;
 
 @Service
 @Transactional
@@ -24,7 +26,7 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public List<Game> findGameByTitle(String gameTitle) {
-        return null;
+        return gameRepository.findByTitle(gameTitle);
     }
 
     @Override
@@ -44,13 +46,18 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public Game updateGame(Long id, Game game) {
-        if (game.getId() != id) {
-            throw new IdMismatchException();
+        Optional<Game> gameFromDbOpt = gameRepository.findById(id);
+
+        if (gameFromDbOpt.isEmpty()) {
+            throw new NotFoundException(GAME);
         }
-        gameRepository.findById(id)
-                .orElseThrow();
+
+        Game gameFromDb = gameFromDbOpt.get();
+
+        gameFromDb.setTitle(game.getTitle());
+        gameFromDb.setDeveloper(game.getDeveloper());
+        gameFromDb.setCharacters(game.getCharacters());
+
         return gameRepository.save(game);
     }
-
-
 }
