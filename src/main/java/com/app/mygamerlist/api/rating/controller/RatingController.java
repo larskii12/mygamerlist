@@ -14,48 +14,53 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/rating")
 public class RatingController {
-//
-//    @Autowired
-//    private RatingService ratingService;
-//
-//    @GetMapping
-//    public Iterable<Rating> viewRatingList() {
-//        return ratingService.findAll();
-//    }
-//
-//    @GetMapping
-//    public Iterable<Rating> viewRatingListByGame() {
-//        return ratingService.findAllRatingsByGameTitle();
-//    }
-//
-//    @GetMapping
-//    public Iterable<Rating> viewRatingListByUser() {
-//        return ratingService.findAllRatingsByUser();
-//    }
-//
-//    @GetMapping("/title/{gameTitle}")
-//    public List<Game> findByTitle(@PathVariable String gameTitle) {
-//        return gameService.findGameByTitle(gameTitle);
-//    }
-//
-//    @GetMapping("/{id}")
-//    public Game findOne(@PathVariable Long id) {
-//        return gameService.findGameById(id);
-//    }
-//
-//    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Game createGame(@RequestBody Game game) {
-//        return gameService.saveGame(game);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public void deleteGame(@PathVariable Long id) {
-//        gameService.deleteById(id);
-//    }
-//
-//    @PutMapping("/{id}")
-//    public Game updateGame(@RequestBody Game game, @PathVariable Long id) {
-//        return gameService.updateGame(id, game);
-//    }
+
+    @Autowired
+    private RatingService ratingService;
+
+    @GetMapping
+    public Iterable<Rating> viewRatingList() {
+        return ratingService.findAll();
+    }
+
+    @GetMapping
+    public Iterable<Rating> viewRatingListByGame(@RequestParam Long gameId,
+                                                 @RequestParam String title) {
+        return ratingService.findAllRatingsByGame(gameId, title);
+    }
+
+    @GetMapping
+    public Iterable<Rating> viewRatingListByCharacter(@RequestParam Long characterId,
+                                                      @RequestParam String name) {
+        return ratingService.findAllRatingsByCharacter(characterId, name);
+    }
+
+    @GetMapping
+    public Iterable<Rating> viewRatingListByUser(@RequestParam Long userId,
+                                                 @RequestParam String username) {
+        return ratingService.findAllRatingsByUser(userId, username);
+    }
+
+    @GetMapping("/{id}")
+    public Rating findRatingById(@PathVariable Long id) {
+        return ratingService.findRatingById(id);
+    }
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public Rating createRating(@RequestBody Rating rating) {
+        return ratingService.createRating(rating);
+    }
+
+    @PutMapping("/{id}")
+    public Rating updateRating(@PathVariable Long id,
+                             @RequestBody Rating rating) {
+        return ratingService.updateRating(id, rating);
+    }
+
+
+    @DeleteMapping("/{id}")
+    public void deleteRating(@PathVariable Long id) {
+        ratingService.deleteById(id);
+    }
 }

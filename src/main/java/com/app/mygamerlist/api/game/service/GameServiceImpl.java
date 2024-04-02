@@ -56,8 +56,9 @@ public class GameServiceImpl implements GameService {
 
         gameFromDb.setTitle(game.getTitle());
         gameFromDb.setDeveloper(game.getDeveloper());
+        gameFromDb.setGenre(game.getGenre());
         gameFromDb.setCharacters(game.getCharacters());
 
-        return gameRepository.save(game);
+        return gameRepository.save(gameFromDb);
     }
 }

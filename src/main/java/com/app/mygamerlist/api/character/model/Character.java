@@ -2,6 +2,7 @@ package com.app.mygamerlist.api.character.model;
 
 import com.app.mygamerlist.api.game.model.Game;
 import com.app.mygamerlist.common.jpa.entity.BasicIdEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,16 +15,17 @@ import lombok.*;
 @AllArgsConstructor
 public class Character extends BasicIdEntity {
 
-    @Column(nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column
+    @Column(name = "description")
     private String description;
 
-    @Column
+    @Column(name = "is_enemy")
     private Boolean isEnemy;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "game_id")
+    @JsonBackReference
     private Game game;
 }
