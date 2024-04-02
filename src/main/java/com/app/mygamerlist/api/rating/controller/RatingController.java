@@ -23,20 +23,20 @@ public class RatingController {
         return ratingService.findAll();
     }
 
-    @GetMapping
+    @GetMapping("/games")
     public Iterable<Rating> viewRatingListByGame(@RequestParam Long gameId,
                                                  @RequestParam String title) {
         return ratingService.findAllRatingsByGame(gameId, title);
     }
 
-    @GetMapping
+    @GetMapping("/characters")
     public Iterable<Rating> viewRatingListByCharacter(@RequestParam Long characterId,
                                                       @RequestParam String name) {
         return ratingService.findAllRatingsByCharacter(characterId, name);
     }
 
-    @GetMapping
-    public Iterable<Rating> viewRatingListByUser(@RequestParam Long userId,
+    @GetMapping("/users/{userId}")
+    public Iterable<Rating> viewRatingListByUser(@PathVariable Long userId,
                                                  @RequestParam String username) {
         return ratingService.findAllRatingsByUser(userId, username);
     }

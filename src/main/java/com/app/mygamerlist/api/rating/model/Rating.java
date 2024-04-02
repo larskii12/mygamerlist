@@ -17,8 +17,8 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 public class Rating extends BasicIdEntity {
 
-    @Column(name = "value", nullable = false)
-    private int value;
+    @Column(name = "rate", nullable = false)
+    private int rate;
 
     @Column(name = "comment")
     private String comment;

@@ -17,6 +17,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name="users")
 public class User extends BasicIdEntity {
 
     @Column(name = "username", nullable = false)
@@ -45,7 +46,7 @@ public class User extends BasicIdEntity {
             inverseJoinColumns = @JoinColumn(name = "game_id"))
     private Set<Game> playedGames;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rating")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     @JsonManagedReference
     private List<Rating> ratings;
 

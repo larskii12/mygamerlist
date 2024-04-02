@@ -42,11 +42,11 @@ public class RatingServiceImpl implements RatingService {
         if (isNull(characterId) && isNull(name)) {
             return findAll();
         } else if (isNull(name)) {
-            return ratingRepository.findRatingsByGameId(characterId);
+            return ratingRepository.findRatingsByCharacterId(characterId);
         } else if (isNull(characterId)) {
-            return ratingRepository.findRatingsByGameTitle(name);
+            return ratingRepository.findRatingsByCharacterName(name);
         } else {
-            return ratingRepository.findRatingsByGameIdAndTitle(characterId, name);
+            return ratingRepository.findRatingsByCharacterIdAndName(characterId, name);
         }
     }
 
@@ -83,7 +83,7 @@ public class RatingServiceImpl implements RatingService {
 
         Rating ratingFromDb = ratingFromDbOpt.get();
 
-        ratingFromDb.setValue(rating.getValue());
+        ratingFromDb.setRate(rating.getRate());
         ratingFromDb.setComment(rating.getComment());
         ratingFromDb.setType(rating.getType());
         ratingFromDb.setEntityId(rating.getEntityId());

@@ -13,6 +13,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name="characters")
 public class Character extends BasicIdEntity {
 
     @Column(name = "name", nullable = false)
@@ -25,7 +26,7 @@ public class Character extends BasicIdEntity {
     private Boolean isEnemy;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "game_id")
+    @JoinColumn(name = "game_id", nullable = false)
     @JsonBackReference
     private Game game;
 }
