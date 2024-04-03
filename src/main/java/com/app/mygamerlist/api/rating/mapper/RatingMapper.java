@@ -5,6 +5,7 @@ import com.app.mygamerlist.api.character.model.CharacterDto;
 import com.app.mygamerlist.api.rating.model.Rating;
 import com.app.mygamerlist.api.rating.model.RatingDto;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

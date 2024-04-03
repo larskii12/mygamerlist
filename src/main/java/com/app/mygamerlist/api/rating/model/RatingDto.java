@@ -1,9 +1,13 @@
 package com.app.mygamerlist.api.rating.model;
 
-import com.app.mygamerlist.api.user.model.User;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
+@Data
+@SuperBuilder
+@NoArgsConstructor
 public class RatingDto {
 
     private int rate;

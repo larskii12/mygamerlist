@@ -54,15 +54,13 @@ public class RatingController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public Rating createRating(@RequestBody RatingDto ratingDto) {
-        Rating rating = ratingMapper.toEntity(ratingDto);
+    public Rating createRating(@RequestBody Rating rating) {
         return ratingService.createRating(rating);
     }
 
     @PutMapping("/{id}")
     public Rating updateRating(@PathVariable Long id,
-                             @RequestBody RatingDto ratingDto) {
-        Rating rating = ratingMapper.toEntity(ratingDto);
+                             @RequestBody Rating rating) {
         return ratingService.updateRating(id, rating);
     }
 
