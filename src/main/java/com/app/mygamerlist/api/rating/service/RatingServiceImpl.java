@@ -89,7 +89,7 @@ public class RatingServiceImpl implements RatingService {
         ratingFromDb.setEntityId(rating.getEntityId());
         ratingRepository.findById(id)
                 .orElseThrow();
-        return ratingRepository.save(rating);
+        return ratingRepository.save(ratingFromDb);
     }
 
     @Override

@@ -12,6 +12,8 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class UserController {
 
@@ -31,9 +33,18 @@ public class UserController {
     @PostMapping("/{userId}/games")
     public Game addPlayedGame(@PathVariable Long userId,
                               @RequestBody Game game) {
-        User user = userService.findUserById(userId);
-        user.getPlayedGames().add(game);
-        userService.saveUser(user);
+        userService.addPlayedGame(userId, game);
         return game;
+    }
+
+    @GetMapping("/{userId}/games")
+    public List<Game> findAllGamesByUserId(@PathVariable Long userId) {
+        return userService.findAllGamesByUserId(userId);
+    }
+
+    @DeleteMapping("/{userId}/games/{gameId}")
+    public void removePlayedGame(@PathVariable Long userId,
+                                 @PathVariable Long gameId) {
+        userService.removePlayedGame(userId, gameId);
     }
 }
