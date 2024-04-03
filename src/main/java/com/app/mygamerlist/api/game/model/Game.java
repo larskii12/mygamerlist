@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -29,7 +30,6 @@ public class Game extends BasicIdEntity {
     private String developer;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "game")
-    @JsonManagedReference
     private List<Character> characters;
 
     @ManyToMany(mappedBy = "playedGames")

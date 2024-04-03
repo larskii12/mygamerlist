@@ -26,7 +26,7 @@ public class Character extends BasicIdEntity {
     private Boolean isEnemy;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "game_id", nullable = false)
-    @JsonBackReference
+    @JoinColumn(name = "game_id")
+    @JsonIgnore
     private Game game;
 }

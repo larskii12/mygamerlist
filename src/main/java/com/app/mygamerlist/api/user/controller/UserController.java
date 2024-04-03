@@ -28,12 +28,12 @@ public class UserController {
         return userService.loginUser(login);
     }
 
-//    @PostMapping("/{userId}/games")
-//    public Game addPlayedGame(@PathVariable Long userId,
-//                              @RequestBody Game game) {
-//        User user = userService.findUserById(userId);
-//        user.getPlayedGames().addGame(game);
-//        userService.saveUser(user);
-//        return game;
-//    }
+    @PostMapping("/{userId}/games")
+    public Game addPlayedGame(@PathVariable Long userId,
+                              @RequestBody Game game) {
+        User user = userService.findUserById(userId);
+        user.getPlayedGames().add(game);
+        userService.saveUser(user);
+        return game;
+    }
 }

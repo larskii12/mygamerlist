@@ -1,0 +1,14 @@
+{
+  "id": 1,
+  "title": "Genshin Impact",
+  "developer": "Hoyoverse",
+  "genre": "RPG",
+  "characters": [
+    {
+      "id": 1,
+      "name": "Kazuha",
+      "description": "Anemo Sword",
+      "isEnemy": false
+    }
+  ]
+}

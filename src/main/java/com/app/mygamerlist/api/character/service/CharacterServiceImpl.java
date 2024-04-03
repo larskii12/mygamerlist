@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+import static com.app.mygamerlist.common.exception.NotFoundException.CHARACTER;
 import static com.app.mygamerlist.common.exception.NotFoundException.GAME;
 
 @Service
@@ -39,6 +40,9 @@ public class CharacterServiceImpl implements CharacterService {
 
     @Override
     public void deleteById(Long id) {
+        if (!characterRepository.existsById(id)) {
+            throw new NotFoundException(CHARACTER);
+        }
         characterRepository.deleteById(id);
     }
 

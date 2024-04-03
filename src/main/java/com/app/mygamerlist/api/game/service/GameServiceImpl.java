@@ -1,5 +1,6 @@
 package com.app.mygamerlist.api.game.service;
 
+import com.app.mygamerlist.api.character.model.Character;
 import com.app.mygamerlist.api.game.model.Game;
 import com.app.mygamerlist.api.game.repository.GameRepository;
 import com.app.mygamerlist.common.exception.NotFoundException;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.app.mygamerlist.common.exception.NotFoundException.GAME;
+import static java.util.Objects.nonNull;
 
 @Service
 @Transactional
@@ -41,6 +43,9 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public void deleteById(Long id) {
+        if (!gameRepository.existsById(id)) {
+            throw new NotFoundException(GAME);
+        }
         gameRepository.deleteById(id);
     }
 

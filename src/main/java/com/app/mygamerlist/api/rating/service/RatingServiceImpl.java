@@ -94,6 +94,9 @@ public class RatingServiceImpl implements RatingService {
 
     @Override
     public void deleteById(Long id) {
+        if (!ratingRepository.existsById(id)) {
+            throw new NotFoundException(GAME);
+        }
         ratingRepository.deleteById(id);
     }
 }

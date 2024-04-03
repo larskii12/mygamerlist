@@ -30,7 +30,7 @@ public class CharacterController {
         return characterService.findCharacterById(id);
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public Character createCharacter(@RequestBody CharacterDto characterDto) {
         Character character = characterMapper.toEntity(characterDto);
