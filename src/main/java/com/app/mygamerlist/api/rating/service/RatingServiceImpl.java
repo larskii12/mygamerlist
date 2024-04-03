@@ -25,42 +25,18 @@ public class RatingServiceImpl implements RatingService {
     }
 
     @Override
-    public Iterable<Rating> findAllRatingsByGame(Long gameId, String title) {
-        if (isNull(gameId) && isNull(title)) {
-            return findAll();
-        } else if (isNull(title)) {
-            return ratingRepository.findRatingsByGameId(gameId);
-        } else if (isNull(gameId)) {
-            return ratingRepository.findRatingsByGameTitle(title);
-        } else {
-            return ratingRepository.findRatingsByGameIdAndTitle(gameId, title);
-        }
+    public Iterable<Rating> findAllRatingsByGame(Long gameId) {
+        return ratingRepository.findRatingsByGameId(gameId);
     }
 
     @Override
-    public Iterable<Rating> findAllRatingsByCharacter(Long characterId, String name) {
-        if (isNull(characterId) && isNull(name)) {
-            return findAll();
-        } else if (isNull(name)) {
-            return ratingRepository.findRatingsByCharacterId(characterId);
-        } else if (isNull(characterId)) {
-            return ratingRepository.findRatingsByCharacterName(name);
-        } else {
-            return ratingRepository.findRatingsByCharacterIdAndName(characterId, name);
-        }
+    public Iterable<Rating> findAllRatingsByCharacter(Long characterId) {
+        return ratingRepository.findRatingsByCharacterId(characterId);
     }
 
     @Override
-    public Iterable<Rating> findAllRatingsByUser(Long userId, String username) {
-        if (isNull(userId) && isNull(username)) {
-            return findAll();
-        } else if (isNull(username)) {
-            return ratingRepository.findRatingsByUserId(userId);
-        } else if (isNull(userId)) {
-            return ratingRepository.findRatingsByUsername(username);
-        } else {
-            return ratingRepository.findRatingsByUserIdAndUsername(userId, username);
-        }
+    public Iterable<Rating> findAllRatingsByUser(Long userId) {
+        return ratingRepository.findRatingsByUserId(userId);
     }
 
     @Override

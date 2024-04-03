@@ -10,11 +10,11 @@ public interface RatingService {
 
     Iterable<Rating> findAll();
 
-    Iterable<Rating> findAllRatingsByGame(Long gameId, String title);
+    Iterable<Rating> findAllRatingsByGame(Long gameId);
 
-    Iterable<Rating> findAllRatingsByCharacter(Long characterId, String name);
+    Iterable<Rating> findAllRatingsByCharacter(Long characterId);
 
-    Iterable<Rating> findAllRatingsByUser(Long userId, String username);
+    Iterable<Rating> findAllRatingsByUser(Long userId);
 
     Rating findRatingById(Long id);
 
