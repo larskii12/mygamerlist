@@ -14,7 +14,7 @@ import java.io.Serializable;
 public abstract class BasicIdEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 }
