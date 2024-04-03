@@ -11,19 +11,19 @@ import java.util.List;
 @Repository
 public interface RatingRepository extends JpaRepository<Rating, Long> {
 
-    @Query(value = "SELECT * " +
+    @Query(value = "SELECT r " +
             "FROM rating r JOIN game g ON r.entity_id = g.id " +
             "WHERE r.entity_id = :gameId, r.type = 'GAME', and g.title = :title",
             nativeQuery = true)
     List<Rating> findRatingsByGameIdAndTitle(Long gameId, String title);
 
-    @Query(value = "SELECT * " +
+    @Query(value = "SELECT r " +
             "FROM rating r " +
             "WHERE r.entity_id = :gameId and r.type = 'GAME'",
             nativeQuery = true)
     List<Rating> findRatingsByGameId(Long gameId);
 
-    @Query(value = "SELECT * " +
+    @Query(value = "SELECT r " +
             "FROM rating r JOIN game g ON r.entity_id = g.id " +
             "WHERE g.title = :title and r.type = 'GAME'",
             nativeQuery = true)

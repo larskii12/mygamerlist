@@ -1,7 +1,6 @@
 package com.app.mygamerlist.api.game.service;
 
 import com.app.mygamerlist.MyGamerListApplication;
-import com.app.mygamerlist.MyGamerListApplicationTests;
 import com.app.mygamerlist.api.character.model.Character;
 import com.app.mygamerlist.api.game.model.Game;
 import com.app.mygamerlist.api.game.model.Genre;
@@ -43,7 +42,7 @@ import static org.mockito.Mockito.when;
 @ContextConfiguration(classes = {
         GameServiceTest.Config.class,
 })
-@SpringBootTest(classes = MyGamerListApplicationTests.class)
+@SpringBootTest(classes = MyGamerListApplication.class)
 @Transactional
 @RunWith(SpringRunner.class)
 public class GameServiceTest {
